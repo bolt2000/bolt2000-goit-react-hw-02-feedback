@@ -8,7 +8,6 @@ class Counter extends React.Component {
     bad: 0,
   };
 
-
   handleGood = () => {
     this.setState(prevState => {
       return {
@@ -34,6 +33,7 @@ class Counter extends React.Component {
   };
 
   render() {
+    let total = this.state.good + this.state.bad + this.state.neutral;
     return (
       <div>
         <ul className={css.FeedbackOptions_buttonList}>
@@ -77,7 +77,7 @@ class Counter extends React.Component {
             </li>
             <li className={css.Statistics_item}>bad: {this.state.bad}</li>
             <li className={css.Statistics_item}>
-              total: {this.state.valueTotal}
+              total: {total}
             </li>
             {/* <li className={css.Statistics_item}>positive feedback:33%</li> */}
           </ul>
