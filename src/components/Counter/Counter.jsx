@@ -1,6 +1,8 @@
 import React from 'react';
-import css from './Counter.module.css';
-
+import FeedbackOptions from './FeedbackOptions ';
+import Statistics from './Statistics';
+// import propTypes from 'prop-types';
+// import css from './Counter.module.css';
 class Counter extends React.Component {
   state = {
     good: 0,
@@ -32,11 +34,24 @@ class Counter extends React.Component {
     });
   };
 
+  countTotalFeedback = () =>
+    this.state.good + this.state.bad + this.state.neutral;
+
+  countPositiveFeedbackPercentage = () => {
+    return (this.state.good * 100) / this.countTotalFeedback();
+  };
+
   render() {
-    let total = this.state.good + this.state.bad + this.state.neutral;
+    // const { good, neutral, bad } = this.state;
+
     return (
       <div>
-        <ul className={css.FeedbackOptions_buttonList}>
+        <FeedbackOptions
+          onIandleGood={this.handleGood}
+          onHandleNeutral={this.handleNeutral}
+          onHandleBad={this.handleBad}
+        />
+        {/* <ul className={css.FeedbackOptions_buttonList}>
           <li className={css.FeedbackOptions_button_li}>
             <button
               className={css.FeedbackOptions_button}
@@ -67,24 +82,37 @@ class Counter extends React.Component {
               bad
             </button>
           </li>
-        </ul>
+        </ul> */}
         <h2>Statistics</h2>
-        <div>
-          <ul>
-            <li className={css.Statistics_item}>good: {this.state.good}</li>
+        <Statistics
+          good={this.state.good}
+          neutral={this.state.neutral}
+          bad={this.state.bad}
+          total={this.countTotalFeedback()}
+          percentage={this.countPositiveFeedbackPercentage()}
+        />
+        {/* <div> */}
+        {/* <ul>
+            <li className={css.Statistics_item}>good: {good}</li>
+            <li className={css.Statistics_item}>neutral: {neutral}</li>
+            <li className={css.Statistics_item}>bad: {bad}</li>
+            <li className={css.Statistics_item}>total: {this.total()}</li>
             <li className={css.Statistics_item}>
-              neutral: {this.state.neutral}
+              positive feedback: {this.percent()}%
             </li>
-            <li className={css.Statistics_item}>bad: {this.state.bad}</li>
-            <li className={css.Statistics_item}>
-              total: {total}
-            </li>
-            {/* <li className={css.Statistics_item}>positive feedback:33%</li> */}
           </ul>
-        </div>
+        </div> */}
       </div>
     );
   }
 }
 
 export default Counter;
+
+// Counter.prototype = {
+//   good: propTypes.number,
+//   neutral: propTypes.number,
+//   bad: propTypes.number,
+//   total: propTypes.number,
+//   percent: propTypes.number,
+// };
