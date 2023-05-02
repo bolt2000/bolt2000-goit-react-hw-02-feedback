@@ -1,9 +1,8 @@
-import React from "react";
+import React from 'react';
 import css from './Counter.module.css';
 
 const FeedbackOptions = ({ onIandleGood, onHandleNeutral, onHandleBad }) => (
   <ul className={css.FeedbackOptions_buttonList}>
-
     <li className={css.FeedbackOptions_button_li}>
       <button
         className={css.FeedbackOptions_button}
@@ -37,10 +36,7 @@ const FeedbackOptions = ({ onIandleGood, onHandleNeutral, onHandleBad }) => (
   </ul>
 );
 
-
 export default FeedbackOptions;
-
-
 
 //  <ul className={css.list}>
 //    {options.map(option => (

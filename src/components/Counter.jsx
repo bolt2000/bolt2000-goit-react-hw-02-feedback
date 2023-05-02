@@ -1,7 +1,7 @@
 import React from 'react';
 import FeedbackOptions from './FeedbackOptions ';
 import Statistics from './Statistics';
-import propTypes from 'prop-types';
+// import propTypes from 'prop-types';
 
 class Counter extends React.Component {
   state = {
@@ -10,9 +10,6 @@ class Counter extends React.Component {
     bad: 0,
   };
 
-
-
-  
   handleGood = () => {
     this.setState(prevState => {
       return {
@@ -45,7 +42,6 @@ class Counter extends React.Component {
   };
 
   render() {
-
     return (
       <div>
         <FeedbackOptions
@@ -73,10 +69,10 @@ class Counter extends React.Component {
 
 export default Counter;
 
-Counter.prototype = {
-  good: propTypes.number,
-  neutral: propTypes.number,
-  bad: propTypes.number,
-  total: propTypes.number,
-  percentage: propTypes.number,
-};
+// Counter.prototype = {
+//   good: propTypes.number,
+//   neutral: propTypes.number,
+//   bad: propTypes.number,
+//   total: propTypes.number,
+//   percentage: propTypes.number,
+// };
