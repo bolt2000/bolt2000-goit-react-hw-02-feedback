@@ -1,35 +1,44 @@
-import React from 'react';
+import React, { Component} from 'react';
 import FeedbackOptions from './FeedbackOptions ';
 import Statistics from './Statistics';
 // import propTypes from 'prop-types';
 
-class Counter extends React.Component {
+class Counter extends Component {
   state = {
     good: 0,
     neutral: 0,
     bad: 0,
   };
 
-  handleGood = () => {
-    this.setState(prevState => {
-      return {
-        good: prevState.good + 1,
-      };
-    });
-  };
+  // handleGood = () => {
+  //   this.setState(prevState => {
+  //     return {
+  //       good: prevState.good + 1,
+  //     };
+  //   });
+  // };
 
-  handleNeutral = () => {
-    this.setState(prevState => {
-      return {
-        neutral: prevState.neutral + 1,
-      };
-    });
-  };
+  // handleNeutral = () => {
+  //   this.setState(prevState => {
+  //     return {
+  //       neutral: prevState.neutral + 1,
+  //     };
+  //   });
+  // };
 
-  handleBad = () => {
+  // handleBad = () => {
+  //   this.setState(prevState => {
+  //     return {
+  //       bad: prevState.bad + 1,
+  //     };
+  //   });
+  // };
+
+  onLeaveFeedback = (e) => {
+     const { name } = e.target;
     this.setState(prevState => {
       return {
-        bad: prevState.bad + 1,
+        [name]: prevState[name] + 1,
       };
     });
   };
@@ -45,9 +54,8 @@ class Counter extends React.Component {
     return (
       <div>
         <FeedbackOptions
-          onIandleGood={this.handleGood}
-          onHandleNeutral={this.handleNeutral}
-          onHandleBad={this.handleBad}
+          options={Object.keys(this.state)}
+          onLeaveFeedback={this.onLeaveFeedback}
         />
         <h2>Statistics</h2>
 
